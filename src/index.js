@@ -1,68 +1,42 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
+
 import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Intro from "./routes/intro";
-import ErrorPage from "./error-page";
-import Login from './routes/login';
-import Home from './routes/home';
-import CreateAccount from './routes/createAccount';
-import Search from './routes/search';
-import Sell from './routes/sell';
-import Chat from './routes/chat';
-import Account from './routes/account';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+const Intro = lazy(() => import('./routes/intro'));
+const ErrorPage = lazy(() => import('./error-page'));
+const Login = lazy(() => import('./routes/login'));
+const Home = lazy(() => import('./routes/home'));
+const CreateAccount = lazy(() => import('./routes/createAccount'));
+const Search = lazy(() => import('./routes/search'));
+const Sell = lazy(() => import('./routes/sell'));
+const Chat = lazy(() => import('./routes/chat'));
+const Account = lazy(() => import('./routes/account'));
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Intro />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "home",
-    element: <Home />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "createAccount",
-    element: <CreateAccount />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "search",
-    element: <Search />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "sell",
-    element: <Sell />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "chat",
-    element: <Chat />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "account",
-    element: <Account />,
-    errorElement: <ErrorPage />,
-  },
-]);
+const App = () => (
+  <Router>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route errorElement={<ErrorPage />}>
+          <Route path="/" element={<Intro />} />
+          <Route path="login" element={<Login />} />
+          <Route path="home" element={<Home />} />
+          <Route path="createAccount" element={<CreateAccount />} />
+          <Route path="search" element={<Search />} />
+          <Route path="sell" element={<Sell />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="account" element={<Account />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  </Router>
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 
