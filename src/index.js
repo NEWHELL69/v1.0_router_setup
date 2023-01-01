@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import reportWebVitals from './reportWebVitals';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const Intro = lazy(() => import('./routes/intro'));
@@ -18,16 +19,15 @@ const App = () => (
   <Router>
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route errorElement={<ErrorPage />}>
-          <Route path="/" element={<Intro />} />
-          <Route path="login" element={<Login />} />
-          <Route path="home" element={<Home />} />
-          <Route path="createAccount" element={<CreateAccount />} />
-          <Route path="search" element={<Search />} />
-          <Route path="sell" element={<Sell />} />
-          <Route path="chat" element={<Chat />} />
-          <Route path="account" element={<Account />} />
-        </Route>
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/" element={<Intro />} />
+        <Route path="login" element={<Login />} />
+        <Route path="home" element={<Home />} />
+        <Route path="createAccount" element={<CreateAccount />} />
+        <Route path="search" element={<Search />} />
+        <Route path="sell" element={<Sell />} />
+        <Route path="chat" element={<Chat />} />
+        <Route path="account" element={<Account />} />
       </Routes>
     </Suspense>
   </Router>
