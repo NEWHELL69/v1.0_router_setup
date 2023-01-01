@@ -9,7 +9,7 @@ function Home() {
                     <Link to={"/search"}>search</Link>
                 </li>
                 <li>
-                    <Link to={"/accounts"}>accounts</Link>
+                    <Link to={"/account"}>accounts</Link>
                 </li>
                 <li>
                     <Link to={"/chat"}>chat</Link>
