@@ -7,3 +7,7 @@ function Sell() {
   }
   
   export default Sell;
+
+{/*
+    navbar - no
+*/}

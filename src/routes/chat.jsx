@@ -7,3 +7,7 @@ function Chat() {
   }
   
   export default Chat;
+
+  {/*
+    navbar - no
+*/}

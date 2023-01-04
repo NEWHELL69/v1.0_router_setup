@@ -23,4 +23,8 @@ function Home() {
   }
   
   export default Home;
+
+{/*
+    navbar - ok
+*/}
   
